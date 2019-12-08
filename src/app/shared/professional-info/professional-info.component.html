@@ -1,0 +1,58 @@
+<div *ngIf="professional" class="row no-gutters d-flex justify-content-center">
+  <div
+    class="col-8 d-flex"
+    [ngClass]="!tableRow ? 'col-12' : 'align-items-center'"
+  >
+    <div class="user-avatar">
+      <img
+        [src]="professional.imageUrl ? professional.imageUrl : defaultAvatarUrl"
+      />
+    </div>
+
+    <div class="user-info">
+      <div class="name">{{ professional.name }}</div>
+      <div class="role">
+        {{ professional.role }}
+        <span class="location"> | {{ professional.location }}</span>
+      </div>
+      <div class="rating">
+        <rating
+          class="rating"
+          [(ngModel)]="professional.ratingValue"
+          [max]="5"
+          [readonly]="true"
+        ></rating>
+
+        ({{ professional.ratingCount }} review{{
+          professional.ratingCount === 1 ? "" : "s"
+        }})
+      </div>
+      <div class="rate" *ngIf="!tableRow">
+        {{ professional.rateCurrency === "R$" ? professional.rateCurrency : ""
+        }}{{ professional.rateValue
+        }}{{
+          professional.rateCurrency !== "R$" ? professional.rateCurrency : ""
+        }}
+
+        <span class="rateInterval"
+          >/ {{ professional.rateInterval }} Minutes
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="col-4 d-flex justify-content-end align-items-center rate"
+    *ngIf="tableRow"
+  >
+    {{ professional.rateCurrency === "R$" ? professional.rateCurrency : ""
+    }}{{ professional.rateValue
+    }}{{ professional.rateCurrency !== "R$" ? professional.rateCurrency : "" }}
+
+    <span class="rateInterval">/ {{ professional.rateInterval }} Minutes </span>
+  </div>
+
+  <div class="col-12 description" *ngIf="!tableRow">
+    {{ professional.description }}
+  </div>
+</div>

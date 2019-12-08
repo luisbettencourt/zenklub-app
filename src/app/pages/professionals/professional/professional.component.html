@@ -1,0 +1,23 @@
+<a class="back-button" routerLink="./../..">
+  &#8249; Back
+</a>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-7">
+      <app-professional-info
+        [professional]="professional$ | async"
+      ></app-professional-info>
+
+      <div class="other-professionals">
+        Other Professionals:
+        <app-professional-list
+          [professionals]="otherProfessionals$ | async"
+          [small]="true"
+        ></app-professional-list>
+      </div>
+    </div>
+    <div class="col-12 col-md-5 mt-3 mt-md-0">
+      <app-time-table [professional]="professional$ | async"></app-time-table>
+    </div>
+  </div>
+</div>

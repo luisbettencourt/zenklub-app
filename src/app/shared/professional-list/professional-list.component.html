@@ -1,0 +1,11 @@
+<a
+  *ngFor="let professional of professionals"
+  class="row no-gutters d-flex justify-content-center"
+  [routerLink]="'/professionals/professional/' + professional.id"
+>
+  <app-professional-info
+    [professional]="professional"
+    [tableRow]="true"
+    [class.small]="small"
+  ></app-professional-info>
+</a>

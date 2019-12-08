@@ -1,0 +1,32 @@
+:host {
+  display: block;
+
+  &::ng-deep {
+    app-professional-info.small {
+      .user-avatar {
+        img {
+          height: 50px !important;
+          width: 50px !important;
+        }
+      }
+    }
+  }
+
+  a {
+    color: initial;
+    text-decoration: none;
+  }
+
+  .row {
+    margin: 20px 0;
+
+    + .row {
+      &:before {
+        content: "";
+        margin-bottom: 20px;
+        width: 80%;
+        border-top: 1px solid #dee2e6;
+      }
+    }
+  }
+}

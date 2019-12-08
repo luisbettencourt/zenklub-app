@@ -1,0 +1,26 @@
+:host {
+  .back-button {
+    color: #6c757d;
+    position: absolute;
+    top: 15px;
+    left: 30px;
+  }
+
+  .container-fluid {
+    padding: 60px 30px;
+  }
+
+  .other-professionals {
+    &:before {
+      display: block;
+      margin: auto;
+      content: "";
+      margin-bottom: 20px;
+      width: 80%;
+      border-top: 1px solid #dee2e6;
+    }
+
+    font-weight: 600;
+    margin-top: 50px;
+  }
+}

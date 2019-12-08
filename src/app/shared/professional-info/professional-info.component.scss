@@ -1,0 +1,70 @@
+:host {
+  display: block;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  .user-avatar {
+    img {
+      border-radius: 50%;
+      display: block;
+      height: 100px;
+      width: 100px;
+      object-fit: cover;
+    }
+  }
+
+  .user-info {
+    margin-left: 20px;
+
+    .name {
+      font-size: 16px;
+      line-height: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .role {
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 600;
+      line-height: 16px;
+      color: #2a78b3;
+
+      .location {
+        font-weight: 100;
+        text-transform: none;
+        color: #000000;
+        font-size: 14px;
+      }
+    }
+
+    .rating {
+      rating {
+        font-size: 16px;
+        color: #fad64c;
+      }
+
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  .rate {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    .rateInterval {
+      font-size: 12px;
+    }
+  }
+
+  .description {
+    margin-top: 20px;
+    font-size: 14px;
+    white-space: normal;
+  }
+}

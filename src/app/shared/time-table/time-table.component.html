@@ -1,0 +1,75 @@
+<form *ngIf="dates$ | async" [formGroup]="form" class="form-inline">
+  <div class="date-picker shadow">
+    <div class="date-picker-header">
+      <div class="title">Schedule your session!</div>
+      Timezone: Lisboa (+1)
+    </div>
+
+    <div btnRadioGroup formControlName="date" required>
+      <owl-carousel-o
+        [options]="dayCarouselOptions"
+        (translated)="timeslotCar.to($event.startPosition.toString())"
+      >
+        <ng-template
+          *ngFor="let day of dates$ | async"
+          carouselSlide
+          [width]="100"
+        >
+          <div
+            [btnRadio]="day.date"
+            class="carousel-slide"
+            tabindex="0"
+            role="button"
+          >
+            {{ day.date.format("ddd") }}
+            <div class="date">
+              {{ day.date.format("MMM") }} {{ day.date.format("DD") }}
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>
+
+  <div class="time-picker shadow">
+    <div btnRadioGroup formControlName="timeslot" required>
+      <owl-carousel-o [options]="timeslotCarouselOptions" #timeslotCar>
+        <ng-template
+          *ngFor="let day of dates$ | async; let i = index"
+          [width]="100"
+          [id]="i"
+          carouselSlide
+        >
+          <div
+            *ngFor="let timeslot of day.timeslots"
+            class="timeslot"
+            [class.disabled]="timeslot.disabled"
+            tabindex="0"
+            role="button"
+          >
+            <div *ngIf="timeslot.disabled">
+              {{ timeslot.name ? timeslot.name : "-" }}
+            </div>
+            <div *ngIf="!timeslot.disabled" [btnRadio]="timeslot.time">
+              {{ timeslot.time.format("HH:mm") }}
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>
+
+  <div class="form-group w-100">
+    <label>Insert your name</label>
+    <div class="d-flex w-100">
+      <input class="name-input" formControlName="name" type="text" required />
+      <button
+        class="btn btn-primary submit-button"
+        (click)="scheduleTimeslot()"
+        [disabled]="!form.valid"
+      >
+        Schedule
+      </button>
+    </div>
+  </div>
+</form>
